@@ -84,5 +84,7 @@ Open your browser and go to:
 - **Pandas & NumPy** - Data wrangling
 - **Bootstrap/CSS** - Frontend styling
 
-## License
-This project is open-source and available for educational and personal use.
+## Contributor
+Hursh Karnik
+
+hurshkarnik5603@gmail.com
