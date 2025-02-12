@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Social Book{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Social Book</h1>
+        <nav>
+            <a href="{% url 'users:home' %}">Home</a>
+            <a href="{% url 'users:upload_books' %}">Upload Books</a>
+            <a href="{% url 'users:uploaded_files' %}">Uploaded Files</a>
+            <a href="{% url 'users:authors_and_sellers' %}">Authors & Sellers</a>
+            <a href="{% url 'users:login' %}">Login</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <!-- Content will be injected here by child templates -->
+        {% endblock %}
+    </main>
+    <footer>
+        <

@@ -1,0 +1,13 @@
+<!-- send_email.html -->
+<form method="POST">
+  {% csrf_token %}
+  <button type="submit">Send Email</button>
+</form>
+
+{% if message %}
+  <p>{{ message }}</p>
+{% endif %}
+
+{% if error %}
+  <p style="color: red;">{{ error }}</p>
+{% endif %}

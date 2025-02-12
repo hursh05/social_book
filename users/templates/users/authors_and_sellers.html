@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors and Sellers</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="authors-sellers-container">
+        <h1>Authors and Sellers</h1>
+        <ul>
+            {% for user in authors_sellers %}
+                <li>{{ user.username }}</li>
+            {% empty %}
+                <p>No authors or sellers to display.</p>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'users:home' %}">Back to Home</a>
+    </div>
+</body>
+</html>

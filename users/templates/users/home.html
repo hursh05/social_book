@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Social Book</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'users:home' %}">Home</a></li>
+                <li><a href="{% url 'users:login' %}">Login</a></li>
+                <li><a href="{% url 'users:register' %}">Register</a></li>
+                <li><a href="{% url 'users:authors_and_sellers' %}">Authors and Sellers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="welcome-section">
+            <h1>Welcome to Social Book!</h1>
+            <p>Your go-to platform for books, authors, and much more!</p>
+        </section>
+
+        <section class="features">
+            <h2>Features</h2>
+            <div class="feature-item">
+                <h3>Browse Books</h3>
+                <p>Explore a variety of books across genres.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Connect with Authors</h3>
+                <p>Join our community of writers and readers.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Upload Your Book</h3>
+                <p>Share your written work with the world.</p>
+                <form action="{% url 'users:upload_books' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="book-file">Choose a book file to upload:</label>
+                    <input type="file" name="file" id="book-file" required>
+                    <button type="submit">Upload Book</button>
+                </form>
+            </div>
+            <div class="feature-item">
+                <h3>View Uploaded Books</h3>
+                <p>Check out the books you have uploaded.</p>
+                <a class="button" href="{% url 'users:uploaded_files' %}">View Uploaded Books</a>
+            </div>
+        </section>
+
+        <!-- Section to view uploaded books -->
+        {% comment %} <section class="uploaded-files">
+            <h2>Uploaded Books</h2>
+            <p><a href="{% url 'users:uploaded_files' %}">View Uploaded Books</a></p>
+            {% if uploaded_files %}
+                <ul>
+                    {% for file in uploaded_files %}
+                        <li>
+                            <strong>{{ file.title }}</strong><br>
+                            Description: {{ file.description }}<br>
+                            Visibility: {{ file.visibility }}<br>
+                            Cost: ${{ file.cost }}<br>
+                            Year Published: {{ file.year_published }}<br>
+                            <a href="{{ file.file.url }}" target="_blank">View File</a><br>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No books uploaded yet.</p>
+            {% endif %}
+        </section> {% endcomment %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Social Book. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details - Social Book</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'users:home' %}">Home</a></li>
+                <li><a href="{% url 'users:login' %}">Login</a></li>
+                <li><a href="{% url 'users:register' %}">Register</a></li>
+                <li><a href="{% url 'users:authors_and_sellers' %}">Authors and Sellers</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="book-details">
+            <h1>Book Details</h1>
+            <h2>{{ book.title }}</h2>
+            <p><strong>Description:</strong> {{ book.description }}</p>
+            <p><strong>Visibility:</strong> {{ book.visibility }}</p>
+            <p><strong>Cost:</strong> ${{ book.cost }}</p>
+            <p><strong>Year Published:</strong> {{ book.year_published }}</p>
+            <a href="{{ book.file.url }}" target="_blank">View Book File</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Social Book. All rights reserved.</p>
+    </footer>
+</body>
+</html>
